@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ecdf">
+  <title>Enes Okur · Oyunlar / Games</title>
+  <meta name="description" content="Enes Okur'un mobil oyunları. Mobile games by Enes Okur.">
+  <link rel="icon" href="dokuma/ikon.png">
+  <style>
+    /* Geliştirici sitesi: oyunların listesi ve iletişim. Her oyunun kendi klasörü var (tanıtım, destek, gizlilik);
+       oyunun deposundaki tools/site.mjs o klasörü doldurur. app-ads.txt kökte durur (AdMob). */
+    :root { --bg: #f4ecdf; --ink: #3a2f2a; --muted: #76634f; --card: #fffaf2; --accent: #b8412e; }
+    html { background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-text-size-adjust: 100%; }
+    body { max-width: 720px; margin: 0 auto; padding: 32px 16px 40px; }
+    h1 { font-size: 30px; line-height: 1.15; margin: 0; }
+    .sub { color: var(--muted); margin: 4px 0 28px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    a { color: var(--accent); overflow-wrap: anywhere; }
+    .game { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; background: var(--card); color: inherit; text-decoration: none; box-shadow: 0 1px 2px rgb(60 40 20 / 14%), 0 3px 10px rgb(60 40 20 / 10%); }
+    .game:hover, .game:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .game img { width: 64px; height: 64px; border-radius: 16px; flex: none; }
+    .game b { display: block; font-size: 20px; }
+    .game span { color: var(--muted); }
+    footer { margin-top: 36px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1>Enes Okur</h1>
+  <p class="sub">Mobil oyunlar · Mobile games</p>
+
+  <h2>Oyunlar · Games</h2>
+  <a class="game" href="dokuma/">
+    <img src="dokuma/ikon.png" alt="">
+    <div><b>Dokuma</b><span>İplik bulmacası · Thread puzzle</span></div>
+  </a>
+
+  <h2>İletişim · Contact</h2>
+  <p><a href="mailto:mokur12345@gmail.com">mokur12345@gmail.com</a></p>
+
+  <footer>© 2026 Enes Okur</footer>
+</body>
+</html>

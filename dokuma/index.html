@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ecdf">
+  <title>Dokuma · İplik bulmacası / Thread puzzle</title>
+  <meta name="description" content="İpliği doğru sırayla çek, düğümleri çöz, her seviyede yeni bir kilim doku. Pull threads in the right order, untie knots and weave a kilim every level.">
+  <meta property="og:title" content="Dokuma">
+  <meta property="og:description" content="İpliği doğru sırayla çek, düğümleri çöz, her seviyede yeni bir kilim doku.">
+  <meta property="og:image" content="https://okurenes.github.io/dokuma/kapak.jpg">
+  <link rel="icon" href="ikon.png">
+  <link rel="apple-touch-icon" href="ikon.png">
+  <style>
+    /* Oyunun tanıtım ve destek sayfası (geliştirici sitesinde /dokuma/; App Store'daki Destek URL'si).
+       tools/site.mjs bunu, gizlilik politikasını ve görselleri sitenin klasörüne kopyalar.
+       ?lang=tr|en o dili gösterir; yoksa tarayıcının diline göre seçilir. Betik çalışmazsa iki dil alt alta görünür. */
+    :root { --bg: #f4ecdf; --ink: #3a2f2a; --muted: #76634f; --card: #fffaf2; --accent: #b8412e; }
+    html { background: var(--bg) url(doku.jpg) repeat; background-size: 512px; color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-text-size-adjust: 100%; }
+    body { max-width: 720px; margin: 0 auto; padding: 16px 16px 40px; }
+    nav { display: flex; gap: 12px; justify-content: space-between; font-weight: 600; }
+    nav span { display: flex; gap: 12px; }
+    a { color: var(--accent); overflow-wrap: anywhere; }
+    header { display: flex; align-items: center; gap: 14px; margin: 22px 0 16px; }
+    header img { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 1px 2px rgb(60 40 20 / 14%), 0 3px 10px rgb(60 40 20 / 10%); }
+    h1 { font-size: 32px; line-height: 1.1; margin: 0; }
+    .sub { color: var(--muted); margin: 2px 0 0; font-weight: 600; }
+    .cover { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 500; border-radius: 16px; box-shadow: 0 1px 2px rgb(60 40 20 / 14%), 0 3px 10px rgb(60 40 20 / 10%); }
+    .lead { font-size: 19px; margin: 18px 0 6px; }
+    .stores { color: var(--muted); margin: 0 0 8px; }
+    h2 { font-size: 20px; margin: 28px 0 8px; }
+    .box { background: var(--card); border-radius: 14px; padding: 6px 18px; box-shadow: 0 1px 2px rgb(60 40 20 / 14%); }
+    ul { padding-left: 20px; }
+    li { margin: 5px 0; }
+    dt { font-weight: 700; margin-top: 12px; }
+    dd { margin: 2px 0 12px; }
+    footer { margin-top: 32px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+    .only section:not(.on) { display: none; }
+    section + section { margin-top: 48px; border-top: 1px solid rgb(58 47 42 / 15%); }
+    .only section + section { margin-top: 0; border: 0; }
+  </style>
+</head>
+<body>
+  <nav><a href="../">Enes Okur</a><span><a href="?lang=tr">Türkçe</a><a href="?lang=en">English</a></span></nav>
+
+  <section lang="tr" id="tr">
+    <header>
+      <img src="ikon.png" alt="">
+      <div><h1>Dokuma</h1><p class="sub">İplik bulmacası</p></div>
+    </header>
+    <img class="cover" src="kapak.jpg" alt="Dokuma: tezgâhta dokunan bir kilim ve iplikler">
+    <p class="lead">İpliği doğru sırayla çek, düğümleri çöz, her seviyede yeni bir kilim doku.</p>
+    <p class="stores">Yakında Google Play ve App Store'da.</p>
+
+    <h2>Nasıl oynanır</h2>
+    <ul>
+      <li>İpliğe dokun: önü açıksa kayarak çıkar ve yumak olup tezgâha gider.</li>
+      <li>Önünde başka bir iplik varsa çıkamaz ve bir can gider.</li>
+      <li>Düğümlerde iki iplik üst üste geçer: önce üstteki çıkar.</li>
+      <li>Çektiğin iplikler tezgâhta ilmek ilmek dokunur. Seviye bitince kilimin galerine girer.</li>
+    </ul>
+
+    <h2>Destek</h2>
+    <div class="box">
+      <p>Bir sorun mu var, bir önerin mi? Yaz: <a href="mailto:mokur12345@gmail.com">mokur12345@gmail.com</a>. Telefonunun modelini de yazarsan daha çabuk bakabilirim.</p>
+    </div>
+    <dl>
+      <dt>İlerlemem nerede saklanıyor?</dt>
+      <dd>Yalnız telefonunda. Uygulamayı silersen ilerlemen de silinir; başka bir telefona taşınmaz.</dd>
+      <dt>Reklamlar ne zaman çıkıyor?</dt>
+      <dd>Ödüllü reklamı yalnız sen istersen izlersin (can, makas ya da tarak için). Seviye aralarındaki reklamlar 11. seviyeden sonra ve toplam yarım saat oynadıktan sonra başlar, aralarında en az 90 saniye olur.</dd>
+      <dt>Reklam izni seçimimi nasıl değiştiririm?</dt>
+      <dd>Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'de: oyunda Ayarlar → "Reklam gizlilik seçenekleri".</dd>
+      <dt>İnternetsiz oynanır mı?</dt>
+      <dd>Evet. Yalnız reklamlar için internet gerekir; bağlantı yoksa ödüllü reklam açılmaz.</dd>
+    </dl>
+
+    <footer><a href="gizlilik.html?lang=tr">Gizlilik politikası</a><span>© 2026 Enes Okur</span></footer>
+  </section>
+
+  <section lang="en" id="en">
+    <header>
+      <img src="ikon.png" alt="">
+      <div><h1>Dokuma</h1><p class="sub">Thread puzzle</p></div>
+    </header>
+    <img class="cover" src="kapak.jpg" alt="Dokuma: a kilim being woven on a loom, with threads">
+    <p class="lead">Pull threads in the right order, untie knots and weave a kilim every level.</p>
+    <p class="stores">Coming soon to Google Play and the App Store.</p>
+
+    <h2>How to play</h2>
+    <ul>
+      <li>Tap a thread: if its way is clear, it slides out and flies to the loom as a ball of yarn.</li>
+      <li>If another thread is in the way, it can't move and you lose a life.</li>
+      <li>At knots, two threads cross over and under: the top one comes out first.</li>
+      <li>The threads you pull are woven stitch by stitch on the loom. Finish the level and your kilim joins your gallery.</li>
+    </ul>
+
+    <h2>Support</h2>
+    <div class="box">
+      <p>Found a problem or have an idea? Write to <a href="mailto:mokur12345@gmail.com">mokur12345@gmail.com</a>. Telling me your phone model helps me look into it faster.</p>
+    </div>
+    <dl>
+      <dt>Where is my progress saved?</dt>
+      <dd>Only on your phone. Deleting the app deletes your progress, and it can't be moved to another phone.</dd>
+      <dt>When do ads appear?</dt>
+      <dd>Rewarded ads only play when you choose to watch one (for a life, scissors or a comb). Ads between levels start after level 11 and half an hour of total play, with at least 90 seconds between them.</dd>
+      <dt>How do I change my ad consent choice?</dt>
+      <dd>In the European Economic Area, the United Kingdom and Switzerland: in the game, Settings → "Ad privacy options".</dd>
+      <dt>Can I play offline?</dt>
+      <dd>Yes. Only ads need a connection; without one, rewarded ads can't open.</dd>
+    </dl>
+
+    <footer><a href="gizlilik.html?lang=en">Privacy policy</a><span>© 2026 Enes Okur</span></footer>
+  </section>
+
+  <script>
+    // ?lang=tr|en ya da tarayıcının dili: yalnız o dil görünür
+    const lang = new URLSearchParams(location.search).get('lang') ?? ((navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en');
+    const section = document.getElementById(lang);
+    if (section) {
+      section.classList.add('on');
+      document.body.classList.add('only');
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
